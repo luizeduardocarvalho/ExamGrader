@@ -1,0 +1,1 @@
+module.exports.gradeController = require('./grade.controller');
