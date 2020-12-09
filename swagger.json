@@ -17,7 +17,30 @@
       "application/json"
     ],
     "paths": {
-      "/grade": {
+      "/grade/pet": {
+        "post": {
+          "tags": [
+            "Grade"
+          ],
+          "description": "Create a grade",
+          "parameters": [
+            {
+              "name": "user",
+              "in": "body",
+              "description": "Used to create a grade"           
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New grade is created"             
+            }
+          }
+        }        
+      },
+      "/grade/fce": {
         "post": {
           "tags": [
             "Grade"

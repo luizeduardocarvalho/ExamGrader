@@ -4,6 +4,7 @@ const { gradeController } = require('../controllers')
 
 const router = express.Router()
 
-router.post('/grade', gradeController.postGrade)
+router.post('/grade/pet', gradeController.postPetGrade);
+router.post('/grade/fce', gradeController.postFceGrade);
 
 module.exports = router

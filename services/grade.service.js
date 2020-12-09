@@ -1,4 +1,4 @@
-const createGrade = (content) => {
+const createPetGrade = (content) => {
     var reading = content.Reading;
     var writing = content.Writing;
     var listening = content.Listening;
@@ -39,6 +39,48 @@ const createGrade = (content) => {
     };
 }
 
+const createFceGrade = (content) => {
+    var reading = content.Reading;
+    var writing = content.Writing;
+    var listening = content.Listening;
+    var speaking = content.Speaking;
+
+    var resultReading = (reading * 40) / 70;
+    var percentReading = resultReading / 40;
+
+    var resultWriting = (writing * 40) / 40;
+    var percentWriting = resultWriting / 40;
+    
+    var resultListening = (listening * 40) / 30;
+    var percentListening = resultListening / 40;
+
+    var resultSpeaking = (speaking * 40) / 25;
+    var percentSpeaking = resultSpeaking / 40;
+
+    var total = ((resultWriting + resultReading + resultListening + resultSpeaking) / 160) * 100;
+    
+    return {
+        reading: {
+            result: resultReading,
+            percent: percentReading
+        },
+        writing: {
+            result: resultWriting,
+            percent: percentWriting
+        },
+        listening: {
+            result: resultListening,
+            percent: percentListening
+        },
+        speaking: {
+            result: resultSpeaking,
+            percent: percentSpeaking
+        },
+        total: total
+    };
+}
+
 module.exports = {
-    createGrade
+    createPetGrade,
+    createFceGrade
 }
