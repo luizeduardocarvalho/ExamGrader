@@ -62,6 +62,29 @@
             }
           }
         }        
+      },
+      "/grade/cae": {
+        "post": {
+          "tags": [
+            "Grade"
+          ],
+          "description": "Create a grade",
+          "parameters": [
+            {
+              "name": "user",
+              "in": "body",
+              "description": "Used to create a grade"           
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New grade is created"             
+            }
+          }
+        }        
       }
     }
   }
