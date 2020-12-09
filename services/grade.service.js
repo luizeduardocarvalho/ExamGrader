@@ -46,18 +46,19 @@ const createFceGrade = (content) => {
     var speaking = content.Speaking;
 
     var resultReading = (reading * 40) / 70;
-    var percentReading = resultReading / 40;
+    var percentReading = (resultReading / 40) * 100;
 
     var resultWriting = (writing * 40) / 40;
-    var percentWriting = resultWriting / 40;
+    var percentWriting = (resultWriting / 40) * 100;
     
     var resultListening = (listening * 40) / 30;
-    var percentListening = resultListening / 40;
+    var percentListening = (resultListening / 40) * 100;
 
     var resultSpeaking = (speaking * 40) / 25;
-    var percentSpeaking = resultSpeaking / 40;
+    var percentSpeaking = (resultSpeaking / 40) * 100;
 
-    var total = ((resultWriting + resultReading + resultListening + resultSpeaking) / 160) * 100;
+    var score = resultWriting + resultReading + resultListening + resultSpeaking;
+    var total = (score / 160) * 100;
     
     return {
         reading: {
@@ -76,7 +77,10 @@ const createFceGrade = (content) => {
             result: resultSpeaking,
             percent: percentSpeaking
         },
-        total: total
+        total: {
+            score: score,
+            total
+        }
     };
 }
 
