@@ -5,13 +5,13 @@ const createPetGrade = (content) => {
     var speaking = content.Speaking;
 
     var resultReading = (reading * 25) / 32;
-    var percentReading = resultReading / 25 * 100;
-
+    var percentReading = resultReading / 25 * 100;    
+    
     var resultWriting = (writing * 25) / 40;
-    var percentWriting = resultWriting / 25 * 100;
-
+    var percentWriting = resultWriting / 25 * 100;    
+    
     var resultListening = (listening * 25) / 25;
-    var percentListening = resultListening / 25 * 100;
+    var percentListening = resultListening / 25 * 100;  
 
     var resultSpeaking = (speaking * 25) / 25;
     var percentSpeaking = resultSpeaking / 25 * 100;
@@ -38,28 +38,28 @@ const createPetGrade = (content) => {
         parts: {
             Reading: {
                 maxGrade: 25,
-                grade: resultReading,
-                percentage: percentReading
+                grade: resultReading.toFixed(2),
+                percentage: Math.round(percentReading)
             },
             Writing: {
                 maxGrade: 25,
-                grade: resultWriting,
-                percentage: percentWriting
+                grade: resultWriting.toFixed(2),
+                percentage: Math.round(percentWriting)
             },
             Listening: {
                 maxGrade: 25,
-                grade: resultListening,
-                percentage: percentListening
+                grade: resultListening.toFixed(2),
+                percentage: Math.round(percentListening)
             },
             Speaking: {
                 maxGrade: 25,
-                grade: resultSpeaking,
-                percentage: percentSpeaking
+                grade: resultSpeaking.toFixed(2),
+                percentage: Math.round(percentSpeaking)
             }
         },
         total: {
             max: 100,
-            grade: total,
+            grade: score,
             score: score,
             mark: mark
         }
