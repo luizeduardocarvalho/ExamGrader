@@ -1,15 +1,22 @@
-const { gradeService } = require('../services')
+const { gradeService, wordService } = require('../services')
 
-const { createPetGrade, createFceGrade, createCaeGrade } = gradeService
+const { createPetGrade, createFceGrade, createCaeGrade } = gradeService;
+const { createWordFile } = wordService;
 
 const postPetGrade = async (req, res, next) => {
     try {
-        var content = await createPetGrade(req.body)
-        res.send(content);
+        var grades = await createPetGrade(req.body);        
+        var docx =  await createWordFile(grades);        
+        
+        res.writeHead(200, {
+            "Content-Type": "application/vnd.openxmlformats-officedocument.documentml.document",
+            'Content-disposition': `attachment; filename=${grades.student}.docx`
+        });
+        docx.generate(res);
         next()
     } catch (e) {
         console.log(e.message)
-        res.sendStatus(500) && next(error)
+        res.sendStatus(500)
     }
 }
 

@@ -5,37 +5,64 @@ const createPetGrade = (content) => {
     var speaking = content.Speaking;
 
     var resultReading = (reading * 25) / 32;
-    var percentReading = resultReading / 25;
+    var percentReading = resultReading / 25 * 100;
 
     var resultWriting = (writing * 25) / 40;
-    var percentWriting = resultWriting / 25;
-    
+    var percentWriting = resultWriting / 25 * 100;
+
     var resultListening = (listening * 25) / 25;
-    var percentListening = resultListening / 25;
+    var percentListening = resultListening / 25 * 100;
 
     var resultSpeaking = (speaking * 25) / 25;
-    var percentSpeaking = resultSpeaking / 25;
+    var percentSpeaking = resultSpeaking / 25 * 100;
 
     var total = (resultWriting + resultReading + resultListening + resultSpeaking);
-    
+
+    var mark;
+
+    if(total < 60) {
+        mark = 'D';
+    } else if (total >= 60 && total < 80) {
+        mark = 'C';
+    } else if(total >= 80 && total < 85) {
+        mark = 'B';
+    } else {
+        mark = 'A';
+    }
+
     return {
-        reading: {
-            result: resultReading,
-            percent: percentReading
+        level: 'B1 PRELIMINARY',
+        date: 'November, 2020',
+        mockNumber: '2nd',
+        student: content.StudentName,
+        parts: {
+            reading: {
+                maxGrade: 25,
+                grade: resultReading,
+                percentage: percentReading
+            },
+            writing: {
+                maxGrade: 25,
+                grade: resultWriting,
+                percentage: percentWriting
+            },
+            listening: {
+                maxGrade: 25,
+                grade: resultListening,
+                percentage: percentListening
+            },
+            speaking: {
+                maxGrade: 25,
+                grade: resultSpeaking,
+                percentage: percentSpeaking
+            }
         },
-        writing: {
-            result: resultWriting,
-            percent: percentWriting
-        },
-        listening: {
-            result: resultListening,
-            percent: percentListening
-        },
-        speaking: {
-            result: resultSpeaking,
-            percent: percentSpeaking
-        },
-        total: total
+        total: {
+            max: 100,
+            grade: total,
+            score: total,
+            mark: mark
+        }
     };
 }
 
@@ -50,7 +77,7 @@ const createFceGrade = (content) => {
 
     var resultWriting = (writing * 40) / 40;
     var percentWriting = (resultWriting / 40) * 100;
-    
+
     var resultListening = (listening * 40) / 30;
     var percentListening = (resultListening / 40) * 100;
 
@@ -59,7 +86,7 @@ const createFceGrade = (content) => {
 
     var score = resultWriting + resultReading + resultListening + resultSpeaking;
     var total = (score / 160) * 100;
-    
+
     return {
         reading: {
             result: resultReading,
@@ -95,7 +122,7 @@ const createCaeGrade = (content) => {
 
     var resultWriting = (writing * 40) / 40;
     var percentWriting = (resultWriting / 40) * 100;
-    
+
     var resultListening = (listening * 40) / 30;
     var percentListening = (resultListening / 40) * 100;
 
@@ -104,7 +131,7 @@ const createCaeGrade = (content) => {
 
     var score = resultWriting + resultReading + resultListening + resultSpeaking;
     var total = (score / 160) * 100;
-    
+
     return {
         reading: {
             result: resultReading,
