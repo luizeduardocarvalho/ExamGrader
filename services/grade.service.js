@@ -17,7 +17,7 @@ const createPetGrade = (content) => {
     var percentSpeaking = resultSpeaking / 25 * 100;
 
     var total = (resultWriting + resultReading + resultListening + resultSpeaking);
-
+    var score = Math.round(total);
     var mark;
 
     if(total < 70) {
@@ -60,7 +60,7 @@ const createPetGrade = (content) => {
         total: {
             max: 100,
             grade: total,
-            score: total,
+            score: score,
             mark: mark
         }
     };
