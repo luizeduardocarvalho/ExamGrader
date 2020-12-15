@@ -59,7 +59,7 @@ const createPetGrade = (content) => {
         },
         total: {
             max: 100,
-            grade: score,
+            grade: total.toFixed(2),
             score: score,
             mark: mark
         }
