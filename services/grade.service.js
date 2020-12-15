@@ -20,11 +20,11 @@ const createPetGrade = (content) => {
 
     var mark;
 
-    if(total < 60) {
+    if(total < 70) {
         mark = 'D';
-    } else if (total >= 60 && total < 80) {
+    } else if (total >= 70 && total < 85) {
         mark = 'C';
-    } else if(total >= 80 && total < 85) {
+    } else if(total >= 85 && total < 90) {
         mark = 'B';
     } else {
         mark = 'A';
@@ -36,22 +36,22 @@ const createPetGrade = (content) => {
         mockNumber: '2nd',
         student: content.StudentName,
         parts: {
-            reading: {
+            Reading: {
                 maxGrade: 25,
                 grade: resultReading,
                 percentage: percentReading
             },
-            writing: {
+            Writing: {
                 maxGrade: 25,
                 grade: resultWriting,
                 percentage: percentWriting
             },
-            listening: {
+            Listening: {
                 maxGrade: 25,
                 grade: resultListening,
                 percentage: percentListening
             },
-            speaking: {
+            Speaking: {
                 maxGrade: 25,
                 grade: resultSpeaking,
                 percentage: percentSpeaking
