@@ -1,20 +1,22 @@
+const calculateGrade = (grade, value, max) => {
+    var result = (grade * value) / max;
+    var percent = result / value * 100;  
+    return {
+        result: result,
+        percent: percent
+    };
+};
+
 const createPetGrade = (content) => {
     var reading = content.Reading;
     var writing = content.Writing;
     var listening = content.Listening;
     var speaking = content.Speaking;
 
-    var resultReading = (reading * 25) / 32;
-    var percentReading = resultReading / 25 * 100;    
-    
-    var resultWriting = (writing * 25) / 40;
-    var percentWriting = resultWriting / 25 * 100;    
-    
-    var resultListening = (listening * 25) / 25;
-    var percentListening = resultListening / 25 * 100;  
-
-    var resultSpeaking = (speaking * 25) / 25;
-    var percentSpeaking = resultSpeaking / 25 * 100;
+    const { result: resultReading, percent: percentReading } = calculateGrade(reading, 25, 32);
+    const { result: resultWriting, percent: percentWriting } = calculateGrade(writing, 25, 40);
+    const { result: resultListening, percent: percentListening } = calculateGrade(listening, 25, 25);
+    const { result: resultSpeaking, percent: percentSpeaking } = calculateGrade(speaking, 25, 25);
 
     var total = (resultWriting + resultReading + resultListening + resultSpeaking);
     var score = Math.round(total);
@@ -72,17 +74,10 @@ const createFceGrade = (content) => {
     var listening = content.Listening;
     var speaking = content.Speaking;
 
-    var resultReading = (reading * 40) / 70;
-    var percentReading = (resultReading / 40) * 100;
-
-    var resultWriting = (writing * 40) / 40;
-    var percentWriting = (resultWriting / 40) * 100;
-
-    var resultListening = (listening * 40) / 30;
-    var percentListening = (resultListening / 40) * 100;
-
-    var resultSpeaking = (speaking * 40) / 25;
-    var percentSpeaking = (resultSpeaking / 40) * 100;
+    const { result: resultReading, percent: percentReading } = calculateGrade(reading, 40, 70);
+    const { result: resultWriting, percent: percentWriting } = calculateGrade(writing, 40, 40);
+    const { result: resultListening, percent: percentListening } = calculateGrade(listening, 40, 30);
+    const { result: resultSpeaking, percent: percentSpeaking } = calculateGrade(speaking, 40, 25);
 
     var total = resultWriting + resultReading + resultListening + resultSpeaking;
     var score = (total / 160) * 100;
@@ -141,17 +136,10 @@ const createCaeGrade = (content) => {
     var listening = content.Listening;
     var speaking = content.Speaking;
 
-    var resultReading = (reading * 40) / 78;
-    var percentReading = (resultReading / 40) * 100;
-
-    var resultWriting = (writing * 40) / 40;
-    var percentWriting = (resultWriting / 40) * 100;
-
-    var resultListening = (listening * 40) / 30;
-    var percentListening = (resultListening / 40) * 100;
-
-    var resultSpeaking = (speaking * 40) / 25;
-    var percentSpeaking = (resultSpeaking / 40) * 100;
+    const { result: resultReading, percent: percentReading } = calculateGrade(reading, 40, 78);
+    const { result: resultWriting, percent: percentWriting } = calculateGrade(writing, 40, 40);
+    const { result: resultListening, percent: percentListening } = calculateGrade(listening, 40, 30);
+    const { result: resultSpeaking, percent: percentSpeaking } = calculateGrade(speaking, 40, 25);
 
     var score = resultWriting + resultReading + resultListening + resultSpeaking;
     var total = (score / 160) * 100;
