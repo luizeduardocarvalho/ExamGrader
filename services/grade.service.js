@@ -18,13 +18,13 @@ const createPetGrade = (content) => {
 
     var total = (resultWriting + resultReading + resultListening + resultSpeaking);
     var score = Math.round(total);
-    var mark;
 
-    if(total < 70) {
+    var mark;
+    if(score < 70) {
         mark = 'D';
-    } else if (total >= 70 && total < 85) {
+    } else if (score >= 70 && score < 85) {
         mark = 'C';
-    } else if(total >= 85 && total < 90) {
+    } else if(score >= 85 && score < 90) {
         mark = 'B';
     } else {
         mark = 'A';
@@ -84,29 +84,53 @@ const createFceGrade = (content) => {
     var resultSpeaking = (speaking * 40) / 25;
     var percentSpeaking = (resultSpeaking / 40) * 100;
 
-    var score = resultWriting + resultReading + resultListening + resultSpeaking;
-    var total = (score / 160) * 100;
+    var total = resultWriting + resultReading + resultListening + resultSpeaking;
+    var score = (total / 160) * 100;
+    score = Math.round(score);
+
+    var mark;
+    if(score < 60) {
+        mark = 'D';
+    } else if (score >= 60 && score < 75) {
+        mark = 'C';
+    } else if(score >= 75 && score < 90) {
+        mark = 'B';
+    } else {
+        mark = 'A';
+    }
 
     return {
-        reading: {
-            result: resultReading,
-            percent: percentReading
-        },
-        writing: {
-            result: resultWriting,
-            percent: percentWriting
-        },
-        listening: {
-            result: resultListening,
-            percent: percentListening
-        },
-        speaking: {
-            result: resultSpeaking,
-            percent: percentSpeaking
+        level: 'B2 PRELIMINARY',
+        date: 'November, 2020',
+        mockNumber: '2nd',
+        student: content.StudentName,
+        parts: {
+            Reading: {
+                maxGrade: 40,
+                grade: resultReading.toFixed(2),
+                percentage: Math.round(percentReading)
+            },
+            Writing: {
+                maxGrade: 40,
+                grade: resultWriting.toFixed(2),
+                percentage: Math.round(percentWriting)
+            },
+            Listening: {
+                maxGrade: 40,
+                grade: resultListening.toFixed(2),
+                percentage: Math.round(percentListening)
+            },
+            Speaking: {
+                maxGrade: 40,
+                grade: resultSpeaking.toFixed(2),
+                percentage: Math.round(percentSpeaking)
+            }
         },
         total: {
+            max: 160,
+            grade: total.toFixed(2),
             score: score,
-            total
+            mark: mark
         }
     };
 }
