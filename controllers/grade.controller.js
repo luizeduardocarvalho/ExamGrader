@@ -39,8 +39,14 @@ const postFceGrade = async (req, res, next) => {
 
 const postCaeGrade = async (req, res, next) => {
     try {
-        var content = await createCaeGrade(req.body)
-        res.send(content);
+        var grades = await createCaeGrade(req.body)
+        var docx =  await createWordFile(grades);        
+        
+        res.writeHead(200, {
+            "Content-Type": "application/vnd.openxmlformats-officedocument.documentml.document",
+            'Content-disposition': `attachment; filename=${grades.student}.docx`
+        });
+        docx.generate(res);
         next()
     } catch (e) {
         console.log(e.message)

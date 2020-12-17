@@ -1,90 +1,124 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "version": "1.0.0",
-      "title": "Cambridge Exams Grader API",
-      "description": "API used to grade Cambridge exams base on raw results.",
-      "license": {
-        "name": "MIT",
-        "url": "https://opensource.org/licenses/MIT"
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Cambridge Exams Grader API",
+    "description": "API used to grade Cambridge exams base on raw results.",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "basePath": "/api",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/grade/pet": {
+      "post": {
+        "tags": [
+          "Grade"
+        ],
+        "description": "Create a grade",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Used to create a grade",
+            "schema": {
+              "type": "object",       
+              "$ref": "#/definitions/Grade"              
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New grade is created"
+          }
+        }
       }
-    },    
-    "basePath": "/api",
-    "consumes": [
-      "application/json"
-    ],
-    "produces": [
-      "application/json"
-    ],
-    "paths": {
-      "/grade/pet": {
-        "post": {
-          "tags": [
-            "Grade"
-          ],
-          "description": "Create a grade",
-          "parameters": [
-            {
-              "name": "user",
-              "in": "body",
-              "description": "Used to create a grade"           
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "New grade is created"             
+    },
+    "/grade/fce": {
+      "post": {
+        "tags": [
+          "Grade"
+        ],
+        "description": "Create a grade",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Used to create a grade",
+            "schema": {
+              "type": "object",       
+              "$ref": "#/definitions/Grade"              
             }
           }
-        }        
-      },
-      "/grade/fce": {
-        "post": {
-          "tags": [
-            "Grade"
-          ],
-          "description": "Create a grade",
-          "parameters": [
-            {
-              "name": "user",
-              "in": "body",
-              "description": "Used to create a grade"           
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "New grade is created"             
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New grade is created"
+          }
+        }
+      }
+    },
+    "/grade/cae": {
+      "post": {
+        "tags": [
+          "Grade"
+        ],
+        "description": "Create a grade",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Used to create a grade",
+            "schema": {
+              "type": "object",       
+              "$ref": "#/definitions/Grade"              
             }
           }
-        }        
-      },
-      "/grade/cae": {
-        "post": {
-          "tags": [
-            "Grade"
-          ],
-          "description": "Create a grade",
-          "parameters": [
-            {
-              "name": "user",
-              "in": "body",
-              "description": "Used to create a grade"           
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "New grade is created"             
-            }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New grade is created"
           }
-        }        
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Grade": {
+      "type": "object",
+      "properties": {
+        "StudentName": {
+          "type": "string"
+        },
+        "Reading": {
+          "type": "integer"
+        },
+        "Writing": {
+          "type": "integer"
+        },
+        "Speaking": {
+          "type": "integer"
+        },
+        "Listening": {
+          "type": "integer"
+        }
       }
     }
   }
+}
