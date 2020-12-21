@@ -8,11 +8,11 @@ const calculateGrade = (grade, value, max) => {
 };
 
 const createPetGrade = (content) => {
-    var reading = content.Reading;
-    var writing = content.Writing;
-    var listening = content.Listening;
-    var speaking = content.Speaking;
-
+    var reading = Number(content.Reading);
+    var writing = Number(content.Writing);
+    var listening = Number(content.Listening);
+    var speaking = Number(content.Speaking);
+    
     const { result: resultReading, percent: percentReading } = calculateGrade(reading, 25, 32);
     const { result: resultWriting, percent: percentWriting } = calculateGrade(writing, 25, 40);
     const { result: resultListening, percent: percentListening } = calculateGrade(listening, 25, 25);
@@ -192,8 +192,51 @@ const createCaeGrade = (content) => {
     };
 }
 
+const createPlacementTestGrade = (content) => {
+    var reading = Number(content.Reading);
+    var writing = content.Writing;
+    var listening = Number(content.Listening);
+
+    const { result: resultReading, percent: percentReading } = calculateGrade(reading, 45, 20);
+    var resultWriting = ((writing.Grade * 10) / 5) + writing.Text;
+    var percentWriting = resultWriting / 35 * 100;    
+    const { result: resultListening, percent: percentListening } = calculateGrade(listening, 20, 12);
+
+    var total = (resultWriting + resultReading + resultListening);
+    var score = Math.round(total);
+
+    return {
+        level: 'PLACEMENT TEST',
+        date: 'December, 2020',        
+        student: content.StudentName,
+        parts: {
+            Reading: {
+                maxGrade: 25,
+                grade: resultReading.toFixed(2),
+                percentage: Math.round(percentReading)
+            },
+            Writing: {
+                maxGrade: 25,
+                grade: resultWriting.toFixed(2),
+                percentage: Math.round(percentWriting)
+            },
+            Listening: {
+                maxGrade: 25,
+                grade: resultListening.toFixed(2),
+                percentage: Math.round(percentListening)
+            }
+        },
+        total: {
+            max: 100,
+            grade: total.toFixed(2),
+            score: score,
+        }
+    };
+}
+
 module.exports = {
     createPetGrade,
     createFceGrade,
-    createCaeGrade
+    createCaeGrade,
+    createPlacementTestGrade
 }

@@ -97,6 +97,33 @@
           }
         }
       }
+    },
+    "/grade/placement-test": {
+      "post": {
+        "tags": [
+          "Grade"
+        ],
+        "description": "Create a grade",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Used to create a grade",
+            "schema": {
+              "type": "object",       
+              "$ref": "#/definitions/PlacementGrade"              
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New grade is created"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -114,6 +141,31 @@
         },
         "Speaking": {
           "type": "integer"
+        },
+        "Listening": {
+          "type": "integer"
+        }
+      }
+    },
+    "PlacementGrade": {
+      "type": "object",
+      "properties": {
+        "StudentName": {
+          "type": "string"
+        },
+        "Reading": {
+          "type": "integer"
+        },
+        "Writing": {
+          "type": "object",
+          "properties": {
+            "Grade": {
+              "type": "integer"
+            },
+            "Text": {
+              "type": "integer"              
+            }
+          }
         },
         "Listening": {
           "type": "integer"
