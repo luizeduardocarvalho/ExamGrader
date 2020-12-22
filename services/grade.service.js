@@ -198,7 +198,7 @@ const createPlacementTestGrade = (content) => {
     var listening = Number(content.Listening);
     var text = Number(writing.Text);
     var grade = Number(writing.Grade);
-
+    
     const { result: resultReading, percent: percentReading } = calculateGrade(reading, 45, 20);
     var resultWriting = (((grade * 100) / 5) * (10 / 100)) + text;
     var percentWriting = resultWriting / 35 * 100;    
@@ -213,17 +213,17 @@ const createPlacementTestGrade = (content) => {
         student: content.StudentName,
         parts: {
             Reading: {
-                maxGrade: 25,
+                maxGrade: 45,
                 grade: resultReading.toFixed(2),
                 percentage: Math.round(percentReading)
             },
             Writing: {
-                maxGrade: 25,
+                maxGrade: 35,
                 grade: resultWriting.toFixed(2),
                 percentage: Math.round(percentWriting)
             },
             Listening: {
-                maxGrade: 25,
+                maxGrade: 20,
                 grade: resultListening.toFixed(2),
                 percentage: Math.round(percentListening)
             }
