@@ -196,9 +196,11 @@ const createPlacementTestGrade = (content) => {
     var reading = Number(content.Reading);
     var writing = content.Writing;
     var listening = Number(content.Listening);
+    var text = Number(writing.Text);
+    var grade = Number(writing.Grade);
 
     const { result: resultReading, percent: percentReading } = calculateGrade(reading, 45, 20);
-    var resultWriting = ((writing.Grade * 10) / 5) + writing.Text;
+    var resultWriting = ((grade * 10) / 5) + text;
     var percentWriting = resultWriting / 35 * 100;    
     const { result: resultListening, percent: percentListening } = calculateGrade(listening, 20, 12);
 
