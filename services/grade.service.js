@@ -200,11 +200,11 @@ const createPlacementTestGrade = (content) => {
     var grade = Number(writing.Grade);
 
     const { result: resultReading, percent: percentReading } = calculateGrade(reading, 45, 20);
-    var resultWriting = ((grade * 10) / 5) + text;
+    var resultWriting = (((grade * 100) / 5) * (10 / 100)) + text;
     var percentWriting = resultWriting / 35 * 100;    
     const { result: resultListening, percent: percentListening } = calculateGrade(listening, 20, 12);
 
-    var total = (resultWriting + resultReading + resultListening);
+    var total = (percentWriting + percentReading + percentListening) / 3;
     var score = Math.round(total);
 
     return {
