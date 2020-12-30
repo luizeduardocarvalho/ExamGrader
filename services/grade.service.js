@@ -35,7 +35,7 @@ const createPetGrade = (content) => {
     return {
         level: 'B1 PRELIMINARY',
         date: 'November, 2020',
-        mockNumber: '2nd',
+        mockNumber: '3rd',
         student: content.StudentName,
         parts: {
             Reading: {
@@ -97,7 +97,7 @@ const createFceGrade = (content) => {
     return {
         level: 'B2 PRELIMINARY',
         date: 'November, 2020',
-        mockNumber: '2nd',
+        mockNumber: '3rd',
         student: content.StudentName,
         parts: {
             Reading: {
@@ -159,7 +159,7 @@ const createCaeGrade = (content) => {
     return {
         level: 'C1 PRELIMINARY',
         date: 'November, 2020',
-        mockNumber: '2nd',
+        mockNumber: '3rd',
         student: content.StudentName,
         parts: {
             Reading: {
