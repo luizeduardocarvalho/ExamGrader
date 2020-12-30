@@ -34,8 +34,8 @@ const createPetGrade = (content) => {
 
     return {
         level: 'B1 PRELIMINARY',
-        date: 'November, 2020',
-        mockNumber: '2nd',
+        date: 'December, 2020',
+        mockNumber: '3rd',
         student: content.StudentName,
         parts: {
             Reading: {
@@ -96,8 +96,8 @@ const createFceGrade = (content) => {
 
     return {
         level: 'B2 CAMBRIDGE EXAM',
-        date: 'November, 2020',
-        mockNumber: '2nd',
+        date: 'December, 2020',
+        mockNumber: '3rd',
         student: content.StudentName,
         parts: {
             Reading: {
@@ -158,8 +158,8 @@ const createCaeGrade = (content) => {
 
     return {
         level: 'ADVANCED CAMBRIDGE EXAM',
-        date: 'November, 2020',
-        mockNumber: '2nd',
+        date: 'December, 2020',
+        mockNumber: '3rd',
         student: content.StudentName,
         parts: {
             Reading: {
@@ -196,9 +196,11 @@ const createPlacementTestGrade = (content) => {
     var reading = Number(content.Reading);
     var writing = content.Writing;
     var listening = Number(content.Listening);
-
+    var text = Number(writing.Text);
+    var grade = Number(writing.Grade);
+    
     const { result: resultReading, percent: percentReading } = calculateGrade(reading, 45, 20);
-    var resultWriting = (((writing.Grade * 100) / 5) * (10 / 100)) + writing.Text;
+    var resultWriting = (((grade * 100) / 5) * (10 / 100)) + text;
     var percentWriting = resultWriting / 35 * 100;    
     const { result: resultListening, percent: percentListening } = calculateGrade(listening, 20, 12);
 
@@ -211,17 +213,17 @@ const createPlacementTestGrade = (content) => {
         student: content.StudentName,
         parts: {
             Reading: {
-                maxGrade: 25,
+                maxGrade: 45,
                 grade: resultReading.toFixed(2),
                 percentage: Math.round(percentReading)
             },
             Writing: {
-                maxGrade: 25,
+                maxGrade: 35,
                 grade: resultWriting.toFixed(2),
                 percentage: Math.round(percentWriting)
             },
             Listening: {
-                maxGrade: 25,
+                maxGrade: 20,
                 grade: resultListening.toFixed(2),
                 percentage: Math.round(percentListening)
             }
