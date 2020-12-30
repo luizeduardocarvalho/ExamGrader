@@ -12,8 +12,7 @@ const postPetGrade = async (req, res, next) => {
             "Content-Type": "application/vnd.openxmlformats-officedocument.documentml.document",
             'Content-disposition': `attachment; filename=${grades.student}.docx`
         });        
-        docx.generate(res);
-        console.log(res);
+        docx.generate(res);        
         next()
     } catch (e) {
         console.log(e.message)

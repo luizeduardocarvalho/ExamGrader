@@ -95,7 +95,7 @@ const createFceGrade = (content) => {
     }
 
     return {
-        level: 'B2 PRELIMINARY',
+        level: 'B2 CAMBRIDGE EXAM',
         date: 'November, 2020',
         mockNumber: '2nd',
         student: content.StudentName,
@@ -157,7 +157,7 @@ const createCaeGrade = (content) => {
     }
 
     return {
-        level: 'C1 PRELIMINARY',
+        level: 'ADVANCED CAMBRIDGE EXAM',
         date: 'November, 2020',
         mockNumber: '2nd',
         student: content.StudentName,
