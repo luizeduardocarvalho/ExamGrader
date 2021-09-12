@@ -9,8 +9,9 @@ const swaggerUi = require('swagger-ui-express'),
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.get('*', (req, res) => res.redirect('/swagger'));
 app.use('/api', routes);
 
 app.listen(process.env.PORT || 3000, () => console.log('Example app listening on port 3000!'));
