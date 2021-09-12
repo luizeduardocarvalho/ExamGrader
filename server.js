@@ -9,9 +9,7 @@ const swaggerUi = require('swagger-ui-express'),
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-app.get('/', (req, res) => res.send('App is working'));
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/api', routes);
 

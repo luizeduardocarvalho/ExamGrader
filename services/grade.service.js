@@ -33,9 +33,9 @@ const createPetGrade = (content) => {
     }
 
     return {
-        level: 'B1 PRELIMINARY',
-        date: 'December, 2020',
-        mockNumber: '3rd',
+        level: 'B1 PRELIMINARY CAMBRIDGE EXAM',
+        date: 'September, 2021',
+        mockNumber: '2nd',
         student: content.StudentName,
         parts: {
             Reading: {
@@ -88,16 +88,16 @@ const createFceGrade = (content) => {
         mark = 'D';
     } else if (score >= 60 && score < 75) {
         mark = 'C';
-    } else if(score >= 75 && score < 90) {
+    } else if(score >= 75 && score < 80) {
         mark = 'B';
     } else {
         mark = 'A';
     }
 
     return {
-        level: 'B2 CAMBRIDGE EXAM',
-        date: 'December, 2020',
-        mockNumber: '3rd',
+        level: 'B2 FIRST CAMBRIDGE EXAM',
+        date: 'September, 2021',
+        mockNumber: '2nd',
         student: content.StudentName,
         parts: {
             Reading: {
@@ -150,16 +150,16 @@ const createCaeGrade = (content) => {
         mark = 'D';
     } else if (score >= 60 && score < 75) {
         mark = 'C';
-    } else if(score >= 75 && score < 90) {
+    } else if(score >= 75 && score < 80) {
         mark = 'B';
     } else {
         mark = 'A';
     }
 
     return {
-        level: 'ADVANCED CAMBRIDGE EXAM',
-        date: 'December, 2020',
-        mockNumber: '3rd',
+        level: 'C1 ADVANCED CAMBRIDGE EXAM',
+        date: 'September, 2021',
+        mockNumber: '2nd',
         student: content.StudentName,
         parts: {
             Reading: {
