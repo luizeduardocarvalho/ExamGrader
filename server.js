@@ -1,11 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const busboy = require('connect-busboy');
 const app = express();
 const routes = require('./routes');
 const swaggerUi = require('swagger-ui-express'),
     swaggerDocument = require('./swagger.json');
 
+app.use(busboy());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -29,8 +29,8 @@
             "in": "body",
             "description": "Used to create a grade",
             "schema": {
-              "type": "object",       
-              "$ref": "#/definitions/Grade"              
+              "type": "object",
+              "$ref": "#/definitions/Grade"
             }
           }
         ],
@@ -56,8 +56,8 @@
             "in": "body",
             "description": "Used to create a grade",
             "schema": {
-              "type": "object",       
-              "$ref": "#/definitions/Grade"              
+              "type": "object",
+              "$ref": "#/definitions/Grade"
             }
           }
         ],
@@ -83,8 +83,8 @@
             "in": "body",
             "description": "Used to create a grade",
             "schema": {
-              "type": "object",       
-              "$ref": "#/definitions/Grade"              
+              "type": "object",
+              "$ref": "#/definitions/Grade"
             }
           }
         ],
@@ -110,9 +110,34 @@
             "in": "body",
             "description": "Used to create a grade",
             "schema": {
-              "type": "object",       
-              "$ref": "#/definitions/PlacementGrade"              
+              "type": "object",
+              "$ref": "#/definitions/PlacementGrade"
             }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New grade is created"
+          }
+        }
+      }
+    },
+    "/grade/upload-file": {
+      "post": {
+        "tags": [
+          "Grade"
+        ],
+        "description": "Create a grade using a file",
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "file to upload",
+            "required": false,
+            "type": "file"
           }
         ],
         "produces": [
@@ -163,7 +188,7 @@
               "type": "integer"
             },
             "Text": {
-              "type": "integer"              
+              "type": "integer"
             }
           }
         },
