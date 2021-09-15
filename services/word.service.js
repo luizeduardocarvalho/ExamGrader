@@ -1,6 +1,6 @@
 const officegen = require('officegen')
 
-const createWordFile = (grades) => {
+module.exports.createWordFile = (grades) => {
     let docx = officegen('docx')
 
     var pObj = docx.createP({ align: 'center' });
@@ -44,8 +44,4 @@ const createWordFile = (grades) => {
     });
 
     return docx;
-}
-
-module.exports = {
-    createWordFile
 }

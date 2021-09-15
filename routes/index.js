@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { gradeController } = require('../controllers')
+const gradeController = require('../controllers/grade.controller')
 
 const router = express.Router()
 

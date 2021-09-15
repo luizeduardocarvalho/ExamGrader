@@ -1,3 +1,5 @@
+const Grade = require('../models/grade');
+
 const calculateGrade = (grade, value, max) => {
     var result = (grade * value) / max;
     var percent = result / value * 100;  
@@ -7,7 +9,8 @@ const calculateGrade = (grade, value, max) => {
     };
 };
 
-const createPetGrade = (content) => {
+module.exports.createPetGrade = (content) => {
+    let grade = new Grade();
     var reading = Number(content.Reading);
     var writing = Number(content.Writing);
     var listening = Number(content.Listening);
@@ -31,44 +34,43 @@ const createPetGrade = (content) => {
     } else {
         mark = 'A';
     }
-
-    return {
-        level: 'B1 PRELIMINARY CAMBRIDGE EXAM',
-        date: 'September, 2021',
-        mockNumber: '2nd',
-        student: content.StudentName,
-        parts: {
-            Reading: {
-                maxGrade: 25,
-                grade: resultReading.toFixed(2),
-                percentage: Math.round(percentReading)
-            },
-            Writing: {
-                maxGrade: 25,
-                grade: resultWriting.toFixed(2),
-                percentage: Math.round(percentWriting)
-            },
-            Listening: {
-                maxGrade: 25,
-                grade: resultListening.toFixed(2),
-                percentage: Math.round(percentListening)
-            },
-            Speaking: {
-                maxGrade: 25,
-                grade: resultSpeaking.toFixed(2),
-                percentage: Math.round(percentSpeaking)
-            }
+    
+    let parts = {
+        Reading: {
+            maxGrade: 25,
+            grade: resultReading.toFixed(2),
+            percentage: Math.round(percentReading)
         },
-        total: {
-            max: 100,
-            grade: total.toFixed(2),
-            score: score,
-            mark: mark
+        Writing: {
+            maxGrade: 25,
+            grade: resultWriting.toFixed(2),
+            percentage: Math.round(percentWriting)
+        },
+        Listening: {
+            maxGrade: 25,
+            grade: resultListening.toFixed(2),
+            percentage: Math.round(percentListening)
+        },
+        Speaking: {
+            maxGrade: 25,
+            grade: resultSpeaking.toFixed(2),
+            percentage: Math.round(percentSpeaking)
         }
     };
+
+    grade
+        .setLevel('B1 PRELIMINARY CAMBRIDGE EXAM')
+        .setDate('September, 2021')
+        .setMockNumber('2nd')
+        .setStudent(content.StudentName)
+        .setParts(parts)
+        .setTotal(160, total.toFixed(2), score, mark);
+
+    return grade;
 }
 
-const createFceGrade = (content) => {
+module.exports.createFceGrade = (content) => {
+    let grade = new Grade();
     var reading = content.Reading;
     var writing = content.Writing;
     var listening = content.Listening;
@@ -94,43 +96,42 @@ const createFceGrade = (content) => {
         mark = 'A';
     }
 
-    return {
-        level: 'B2 FIRST CAMBRIDGE EXAM',
-        date: 'September, 2021',
-        mockNumber: '2nd',
-        student: content.StudentName,
-        parts: {
-            Reading: {
-                maxGrade: 40,
-                grade: resultReading.toFixed(2),
-                percentage: Math.round(percentReading)
-            },
-            Writing: {
-                maxGrade: 40,
-                grade: resultWriting.toFixed(2),
-                percentage: Math.round(percentWriting)
-            },
-            Listening: {
-                maxGrade: 40,
-                grade: resultListening.toFixed(2),
-                percentage: Math.round(percentListening)
-            },
-            Speaking: {
-                maxGrade: 40,
-                grade: resultSpeaking.toFixed(2),
-                percentage: Math.round(percentSpeaking)
-            }
+    let parts = {
+        Reading: {
+            maxGrade: 40,
+            grade: resultReading.toFixed(2),
+            percentage: Math.round(percentReading)
         },
-        total: {
-            max: 160,
-            grade: total.toFixed(2),
-            score: score,
-            mark: mark
+        Writing: {
+            maxGrade: 40,
+            grade: resultWriting.toFixed(2),
+            percentage: Math.round(percentWriting)
+        },
+        Listening: {
+            maxGrade: 40,
+            grade: resultListening.toFixed(2),
+            percentage: Math.round(percentListening)
+        },
+        Speaking: {
+            maxGrade: 40,
+            grade: resultSpeaking.toFixed(2),
+            percentage: Math.round(percentSpeaking)
         }
     };
+
+    grade
+        .setLevel('B2 FIRST CAMBRIDGE EXAM')
+        .setDate('September, 2021')
+        .setMockNumber('2nd')
+        .setStudent(content.StudentName)
+        .setParts(parts)
+        .setTotal(160, total.toFixed(2), score, mark);
+
+    return grade;
 }
 
-const createCaeGrade = (content) => {
+module.exports.createCaeGrade = (content) => {
+    let grade = new Grade();
     var reading = content.Reading;
     var writing = content.Writing;
     var listening = content.Listening;
@@ -156,89 +157,81 @@ const createCaeGrade = (content) => {
         mark = 'A';
     }
 
-    return {
-        level: 'C1 ADVANCED CAMBRIDGE EXAM',
-        date: 'September, 2021',
-        mockNumber: '2nd',
-        student: content.StudentName,
-        parts: {
-            Reading: {
-                maxGrade: 40,
-                grade: resultReading.toFixed(2),
-                percentage: Math.round(percentReading)
-            },
-            Writing: {
-                maxGrade: 40,
-                grade: resultWriting.toFixed(2),
-                percentage: Math.round(percentWriting)
-            },
-            Listening: {
-                maxGrade: 40,
-                grade: resultListening.toFixed(2),
-                percentage: Math.round(percentListening)
-            },
-            Speaking: {
-                maxGrade: 40,
-                grade: resultSpeaking.toFixed(2),
-                percentage: Math.round(percentSpeaking)
-            }
+    let parts = {
+        Reading: {
+            maxGrade: 40,
+            grade: resultReading.toFixed(2),
+            percentage: Math.round(percentReading)
         },
-        total: {
-            max: 160,
-            grade: total.toFixed(2),
-            score: score,
-            mark: mark
+        Writing: {
+            maxGrade: 40,
+            grade: resultWriting.toFixed(2),
+            percentage: Math.round(percentWriting)
+        },
+        Listening: {
+            maxGrade: 40,
+            grade: resultListening.toFixed(2),
+            percentage: Math.round(percentListening)
+        },
+        Speaking: {
+            maxGrade: 40,
+            grade: resultSpeaking.toFixed(2),
+            percentage: Math.round(percentSpeaking)
         }
     };
+
+    grade
+        .setLevel('B2 FIRST CAMBRIDGE EXAM')
+        .setDate('September, 2021')
+        .setMockNumber('2nd')
+        .setStudent(content.StudentName)
+        .setParts(parts)
+        .setTotal(160, total.toFixed(2), score, mark);
+
+    return grade;
 }
 
-const createPlacementTestGrade = (content) => {
-    var reading = Number(content.Reading);
-    var writing = content.Writing;
-    var listening = Number(content.Listening);
-    var text = Number(writing.Text);
-    var grade = Number(writing.Grade);
+module.exports.createPlacementTestGrade = (content) => {
+    let finalGrade = new Grade();
+    let reading = Number(content.Reading);
+    let writing = content.Writing;
+    let listening = Number(content.Listening);
+    let text = Number(writing.Text);
+    let grade = Number(writing.Grade);
     
     const { result: resultReading, percent: percentReading } = calculateGrade(reading, 45, 20);
-    var resultWriting = (((grade * 100) / 5) * (10 / 100)) + text;
-    var percentWriting = resultWriting / 35 * 100;    
+    let resultWriting = (((grade * 100) / 5) * (10 / 100)) + text;
+    let percentWriting = resultWriting / 35 * 100;    
     const { result: resultListening, percent: percentListening } = calculateGrade(listening, 20, 12);
 
-    var total = (percentWriting + percentReading + percentListening) / 3;
-    var score = Math.round(total);
+    let total = (percentWriting + percentReading + percentListening) / 3;
+    let score = Math.round(total);
 
-    return {
-        level: 'PLACEMENT TEST',
-        date: 'December, 2020',        
-        student: content.StudentName,
-        parts: {
-            Reading: {
-                maxGrade: 45,
-                grade: resultReading.toFixed(2),
-                percentage: Math.round(percentReading)
-            },
-            Writing: {
-                maxGrade: 35,
-                grade: resultWriting.toFixed(2),
-                percentage: Math.round(percentWriting)
-            },
-            Listening: {
-                maxGrade: 20,
-                grade: resultListening.toFixed(2),
-                percentage: Math.round(percentListening)
-            }
+    let parts = {
+        Reading: {
+            maxGrade: 45,
+            grade: resultReading.toFixed(2),
+            percentage: Math.round(percentReading)
         },
-        total: {
-            max: 100,
-            grade: total.toFixed(2),
-            score: score,
+        Writing: {
+            maxGrade: 35,
+            grade: resultWriting.toFixed(2),
+            percentage: Math.round(percentWriting)
+        },
+        Listening: {
+            maxGrade: 20,
+            grade: resultListening.toFixed(2),
+            percentage: Math.round(percentListening)
         }
     };
-}
 
-module.exports = {
-    createPetGrade,
-    createFceGrade,
-    createCaeGrade,
-    createPlacementTestGrade
+    finalGrade
+        .setLevel('B2 FIRST CAMBRIDGE EXAM')
+        .setDate('September, 2021')
+        .setMockNumber('2nd')
+        .setStudent(content.StudentName)
+        .setParts(parts)
+        .setTotal(100, total.toFixed(2), score);
+
+    return finalGrade;
 }

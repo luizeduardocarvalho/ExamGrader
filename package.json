@@ -26,6 +26,7 @@
     "express": "^4.17.1",
     "https": "^1.0.0",
     "officegen": "^0.6.4",
+    "read-excel-file": "^5.2.10",
     "swagger-ui-express": "^4.1.5"
   },
   "engines": {
